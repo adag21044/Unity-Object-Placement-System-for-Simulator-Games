@@ -57,6 +57,18 @@ public class ObjectPlacer : MonoBehaviour
         {
             ExitPlacementMode();
         }
+        else if(Input.GetMouseButton(0))
+        {
+            PlaceObject();
+        }
+    }
+
+    private void PlaceObject()
+    {
+        Quaternion rotation = Quaternion.Euler(0f, playerCamera.transform.eulerAngles.y, 0f);
+        Instantiate(placeableObjectPrefab, _currentPlacementPosition, rotation, transform);
+
+        ExitPlacementMode();
     }
 
     private void EnterPlacementMode()
@@ -71,6 +83,10 @@ public class ObjectPlacer : MonoBehaviour
     private void ExitPlacementMode()
     {
         Debug.Log("ExitPlacementMode");
+
+        Destroy(_previewObject);
+        _previewObject = null;
+
         _inPlacementMode = false;
     }
 
