@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d255cc12b8168f4dba13e0f45d16635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placeableObjectPrefab: {fileID: 9146507714532893233, guid: 70d24dd65b96d0d40a5e30098754e78b, type: 3}
+  placeableObjectPrefab: {fileID: 5646393101570246383, guid: 5335d0e045812cc44b6f8573bf051324, type: 3}
   previewObjectPrefab: {fileID: 7028035735394921447, guid: df1c600f9e323324387d459d981d819c, type: 3}
   playerCamera: {fileID: 1001636471}
   placementSurfaceLayerMask:
