@@ -46,7 +46,7 @@ public class ObjectPlacer : MonoBehaviour
     {
         if (playerCamera == null)
         {
-            Debug.Log("Player Camera is not assigned!");
+            Debug.LogError("Player Camera is not assigned!");
             return;
         }
 
@@ -60,6 +60,10 @@ public class ObjectPlacer : MonoBehaviour
         if (Physics.Raycast(startPos, Vector3.down, out hitInfo, raycastDistance, placementSurfaceLayerMask))
         {
             _currentPlacementPosition = hitInfo.point;
+
+            // Yer yüzeyinin biraz üstünde kalması için ekliyoruz (Örneğin objenin yüksekliğinin yarısı kadar)
+            float objectHeightOffset = _previewObject != null ? _previewObject.GetComponent<Collider>().bounds.extents.y : 0.5f;
+            _currentPlacementPosition.y += objectHeightOffset;
         }
 
         if (_previewObject != null)
@@ -70,10 +74,10 @@ public class ObjectPlacer : MonoBehaviour
         }
         else
         {
-            Debug.Log("Preview object is null during placement update.");
+            Debug.LogWarning("Preview object is null during placement update.");
         }
-        
     }
+
 
     private void UpdateInput()
     {
@@ -139,7 +143,7 @@ public class ObjectPlacer : MonoBehaviour
             return;
 
         Debug.Log("Placing object at: " + _currentPlacementPosition);
-        
+
         Quaternion rotation = Quaternion.Euler(0f, playerCamera.transform.eulerAngles.y, 0f);
         Instantiate(placeableObjectPrefab, _currentPlacementPosition, rotation, transform);
 
