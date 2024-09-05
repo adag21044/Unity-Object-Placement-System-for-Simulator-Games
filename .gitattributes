@@ -1,2 +1,5 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# C# dosyalarını öne çıkarmak için
+*.cs linguist-language=CSharp
+
+# Shader dosyalarını dikkate almamak için
+*.shader linguist-vendored
