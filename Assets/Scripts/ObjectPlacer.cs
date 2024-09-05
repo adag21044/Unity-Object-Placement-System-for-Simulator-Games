@@ -1,3 +1,4 @@
+using GinjaGaming.FinalCharacterController;
 using UnityEngine;
 
 public class ObjectPlacer : MonoBehaviour
@@ -65,6 +66,9 @@ public class ObjectPlacer : MonoBehaviour
 
     private void PlaceObject()
     {
+        if(!_inPlacementMode) return;
+        
+
         Quaternion rotation = Quaternion.Euler(0f, playerCamera.transform.eulerAngles.y, 0f);
         Instantiate(placeableObjectPrefab, _currentPlacementPosition, rotation, transform);
 
@@ -75,6 +79,10 @@ public class ObjectPlacer : MonoBehaviour
     {
         Debug.Log("EnterPlacementMode");
 
+        if(_inPlacementMode) return;
+
+        PlayerInputManager.Instance.PlayerControls.PlayerActionsMap.Disable();
+
         Quaternion rotation = Quaternion.Euler(0f, playerCamera.transform.eulerAngles.y, 0f); 
         _previewObject = Instantiate(previewObjectPrefab, _currentPlacementPosition, rotation, transform);
         _inPlacementMode = true;
@@ -83,6 +91,8 @@ public class ObjectPlacer : MonoBehaviour
     private void ExitPlacementMode()
     {
         Debug.Log("ExitPlacementMode");
+
+        PlayerInputManager.Instance.PlayerControls.PlayerActionsMap.Enable();
 
         Destroy(_previewObject);
         _previewObject = null;
