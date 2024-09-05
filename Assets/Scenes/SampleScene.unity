@@ -276,6 +276,9 @@ MonoBehaviour:
   placementSurfaceLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  previewMaterial: {fileID: 2100000, guid: a33af6ef18070e844934a25fb05861fa, type: 2}
+  validColor: {r: 0.3019608, g: 0.5372549, b: 0.9098039, a: 0}
+  invalidColor: {r: 0.79607844, g: 0.3254902, b: 0.24313726, a: 0}
   objectDistanceFromPlayer: 2
   raycastStartVerticalOffset: 100
   raycastDistance: 1000
